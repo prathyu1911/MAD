@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.devang.exno2.SecondActivity"
+    tools:context="com.example.myapplication.SecondActivity"
     android:orientation="vertical"
     android:gravity="center">
- 
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -14,7 +14,7 @@
         android:layout_margin="20dp"
         android:text="New Text"
         android:textSize="30sp"/>
- 
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:layout_margin="20dp"
         android:text="New Text"
         android:textSize="30sp"/>
- 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -30,5 +30,5 @@
         android:layout_margin="20dp"
         android:text="New Text"
         android:textSize="30sp"/>
- 
+
 </LinearLayout>
