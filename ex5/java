@@ -1,5 +1,5 @@
-package com.example.exno5;
- 
+package com.example.myapplication;
+
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
- 
+
 public class MainActivity extends Activity implements OnClickListener
 {
     EditText Rollno,Name,Marks;
@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
- 
+
         Rollno=(EditText)findViewById(R.id.Rollno);
         Name=(EditText)findViewById(R.id.Name);
         Marks=(EditText)findViewById(R.id.Marks);
@@ -31,13 +31,13 @@ public class MainActivity extends Activity implements OnClickListener
         Update=(Button)findViewById(R.id.Update);
         View=(Button)findViewById(R.id.View);
         ViewAll=(Button)findViewById(R.id.ViewAll);
- 
+
         Insert.setOnClickListener(this);
         Delete.setOnClickListener(this);
         Update.setOnClickListener(this);
         View.setOnClickListener(this);
         ViewAll.setOnClickListener(this);
- 
+
         // Creating database and table
         db=openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);");
@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements OnClickListener
                 showMessage("Error", "Please enter all values");
                 return;
             }
-            db.execSQL("INSERT INTO student VALUES('"+Rollno.getText()+"','"+Name.getText()+
+            db.execSQL("insert into students ('"+Rollno.getText()+"','"+Name.getText()+
                     "','"+Marks.getText()+"');");
             showMessage("Success", "Record added");
             clearText();
