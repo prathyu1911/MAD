@@ -1,5 +1,4 @@
-package com.example.exno6;
- 
+package com.example.myapplication;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,19 +16,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
- 
 public class MainActivity extends ListActivity
 {
     List headlines;
     List links;
- 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         new MyAsyncTask().execute();
     }
- 
     class MyAsyncTask extends AsyncTask<Object,Void,ArrayAdapter>
     {
         @Override
@@ -43,12 +39,8 @@ public class MainActivity extends ListActivity
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(false);
                 XmlPullParser xpp = factory.newPullParser();
- 
-                // We will get the XML from an input stream
                 xpp.setInput(getInputStream(url), "UTF_8");
                 boolean insideItem = false;
- 
-                // Returns the type of current event: START_TAG, END_TAG, etc..
                 int eventType = xpp.getEventType();
                 while (eventType != XmlPullParser.END_DOCUMENT)
                 {
@@ -68,14 +60,13 @@ public class MainActivity extends ListActivity
                             if (insideItem)
                                 links.add(xpp.nextText()); //extract the link of article
                         }
-                    }
+                    }	
                     else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
                     {
                         insideItem=false;
                     }
                     eventType = xpp.next(); //move to next element
                 }
- 
             }
             catch (MalformedURLException e)
             {
@@ -97,7 +88,6 @@ public class MainActivity extends ListActivity
             setListAdapter(adapter);
         }
     }
- 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id)
     {
@@ -105,7 +95,6 @@ public class MainActivity extends ListActivity
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
- 
     public InputStream getInputStream(URL url)
     {
         try
